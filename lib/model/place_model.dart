@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<void> savePlacesToFirebase() async {
   final CollectionReference ref =
-      FirebaseFirestore.instance.collection("myAppCpollection");
+      FirebaseFirestore.instance.collection("smartParkCollection");
   for (final Place place in listOfPlace) {
     final String id =
         DateTime.now().toIso8601String() + Random().nextInt(1000).toString();
