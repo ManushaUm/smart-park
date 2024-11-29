@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firstt_app/Authentication/auth_page.dart';
 import 'package:firstt_app/model/category.dart';
-import 'package:firstt_app/view/LoginScreen.dart';
 import 'package:firstt_app/view/login_page.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';

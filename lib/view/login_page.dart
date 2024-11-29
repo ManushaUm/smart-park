@@ -5,19 +5,35 @@ import 'package:firstt_app/components/text_field_1.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   //text editing controller
   final userNameController = TextEditingController();
+
   final passwordController = TextEditingController();
 
   //sign in user method
   void signUserIn() async {
+    //show loading
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: userNameController.text,
       password: passwordController.text,
     );
+    Navigator.pop(context);
   }
 
   @override
