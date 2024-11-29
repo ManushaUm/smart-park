@@ -1,6 +1,6 @@
-# firstt_app
+# smart_Park
 
-A new Flutter project.
+Flutter project developed for parking management of individuals, companies
 
 ## Getting Started
 
