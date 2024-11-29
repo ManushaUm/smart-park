@@ -29,11 +29,34 @@ class _LoginPageState extends State<LoginPage> {
         );
       },
     );
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: userNameController.text,
-      password: passwordController.text,
-    );
-    Navigator.pop(context);
+
+    //try catch
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: userNameController.text,
+        password: passwordController.text,
+      );
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Account not found'),
+            content: Text("Please Enter a valid email and password"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   @override
