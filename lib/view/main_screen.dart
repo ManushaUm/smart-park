@@ -10,6 +10,11 @@ class AppMainScreen extends StatefulWidget {
 class _AppMainScreenState extends State<AppMainScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const Scaffold(
+      //display as logged in
+      body: Center(
+        child: Text("Welcome to the main screen"),
+      ),
+    );
   }
 }

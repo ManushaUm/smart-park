@@ -41,6 +41,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456914878584:android:cb360bca77f92c470aed8d",
+        "android_client_info": {
+          "package_name": "com.smartpark.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456914878584-opeunlqqktuipdodtd7ikfkiklqromvo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9wypDw60M5XgiXhLgjInER1Ye4OxrkxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456914878584-opeunlqqktuipdodtd7ikfkiklqromvo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstt_app/components/main_button.dart';
 import 'package:firstt_app/components/square_tile.dart';
 import 'package:firstt_app/components/text_field_1.dart';
@@ -10,6 +11,14 @@ class LoginPage extends StatelessWidget {
   //text editing controller
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
+
+  //sign in user method
+  void signUserIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: userNameController.text,
+      password: passwordController.text,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +75,7 @@ class LoginPage extends StatelessWidget {
               //signin button
               const SizedBox(height: 25),
               MainButton(
-                onTap: () {
-                  print("Sign in button pressed");
-                },
+                onTap: signUserIn,
               ),
               // or continue with google / apple
               // or continue with
