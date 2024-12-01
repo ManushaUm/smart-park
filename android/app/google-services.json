@@ -37,6 +37,13 @@
             {
               "client_id": "456914878584-opeunlqqktuipdodtd7ikfkiklqromvo.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "456914878584-be99b5qfscnbk1q2lmjugs7824ap21s2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firsttApp"
+              }
             }
           ]
         }
@@ -50,6 +57,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "456914878584-vtqim46ctl4it36j3h0jp88al5cs7cg0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smartpark.app",
+            "certificate_hash": "aa675546daaeb40d2e2efd4c5bb70a117ea8f140"
+          }
+        },
         {
           "client_id": "456914878584-opeunlqqktuipdodtd7ikfkiklqromvo.apps.googleusercontent.com",
           "client_type": 3
@@ -66,6 +81,13 @@
             {
               "client_id": "456914878584-opeunlqqktuipdodtd7ikfkiklqromvo.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "456914878584-be99b5qfscnbk1q2lmjugs7824ap21s2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firsttApp"
+              }
             }
           ]
         }
