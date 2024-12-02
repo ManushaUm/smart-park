@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firstt_app/view/message.dart';
 import 'package:flutter/material.dart';
 
 class AppMainScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
       const Scaffold(),
       const Scaffold(),
       const Scaffold(),
-      const Scaffold(),
+      const MessagesScreen(),
       const Scaffold(),
     ];
     super.initState();
@@ -28,6 +29,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      body: page[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
           elevation: 5,
@@ -84,7 +86,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
               label: "Profile",
             ),
           ]),
-      body: page[selectedIndex],
+      
     );
   }
 }
