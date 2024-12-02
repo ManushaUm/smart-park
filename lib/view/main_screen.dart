@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firstt_app/view/explore_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppMainScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
   @override
   void initState() {
     page = [
-      const Scaffold(),
+      const ExploreScreen(),
       const Scaffold(),
       const Scaffold(),
       const Scaffold(),
