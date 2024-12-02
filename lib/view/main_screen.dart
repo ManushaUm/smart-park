@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstt_app/view/message.dart';
 import 'package:firstt_app/view/explore_screen.dart';
+import 'package:firstt_app/view/profile.dart';
 import 'package:flutter/material.dart';
 
 class AppMainScreen extends StatefulWidget {
@@ -21,7 +22,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
       const Scaffold(),
       const Scaffold(),
       const MessagesScreen(),
-      const Scaffold(),
+      const ProfilePage(),
     ];
     super.initState();
   }

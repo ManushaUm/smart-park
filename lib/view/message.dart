@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import '../model/message_model.dart';
+import 'message_details.dart';
 import 'package:firstt_app/components/my_icon_button.dart';
 class MessagesScreen extends StatefulWidget {
   const MessagesScreen({super.key});
@@ -10,7 +11,7 @@ class MessagesScreen extends StatefulWidget {
 }
 
 class _MessagesScreenState extends State<MessagesScreen> {
-  List<String> messagesScreenType = ["All", "Traveling", "Support"];
+  List<String> messagesScreenType = ["All", "Ongoing", "Past"];
   int selectedIndex = 0;
 
   @override
@@ -100,7 +101,16 @@ class _MessagesScreenState extends State<MessagesScreen> {
 
   // Build message item UI
   Widget _buildMessageItem(Message message) {
-    return Padding(
+     return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MessageDetailsScreen(message: message),
+          ),
+        );
+      },
+      child: Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Row(
         children: [
@@ -178,6 +188,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
             ),
           ),
         ],
+       ),
       ),
     );
   }
