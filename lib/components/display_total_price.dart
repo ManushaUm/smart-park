@@ -8,60 +8,21 @@ class DisplayTotalPrice extends StatefulWidget {
 }
 
 class _DisplayTotalPriceState extends State<DisplayTotalPrice> {
-  bool isSwitch = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(
-            color: Color.fromARGB(255, 6, 210, 159),
+      padding: const EdgeInsets.symmetric(horizontal: 50),
+      child: Column(
+        //crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Text(
+            "Welcome!",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 17,
+            ),
           ),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Display total price",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 17,
-                    ),
-                  ),
-                  Text(
-                    "Inclued all fees, before texes",
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 16,
-                    ),
-                  )
-                ],
-              ),
-              Switch.adaptive(
-                value: isSwitch,
-                onChanged: (value) {
-                  setState(() {
-                    isSwitch = value;
-                  });
-                },
-                //activeColor: Colors.green, // Color of the thumb when ON
-                activeTrackColor:
-                    Colors.greenAccent, // Color of the track when ON
-                //inactiveThumbColor: Colors.red, // Color of the thumb when OFF
-                //inactiveTrackColor:
-                // Color of the track when OFF
-              )
-            ],
-          ),
-        ),
+        ],
       ),
     );
   }

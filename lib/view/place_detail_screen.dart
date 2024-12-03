@@ -1,7 +1,7 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firstt_app/Provider/favorite_provider.dart';
-import 'package:firstt_app/components/location_in_map.dart';
+//import 'package:firstt_app/components/location_in_map.dart';
 import 'package:firstt_app/components/my_icon_button.dart';
 import 'package:firstt_app/components/star_rating.dart';
 import 'package:flutter/material.dart';
@@ -90,17 +90,17 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
                   placePropertyList(
                       size,
                       "https://cdn-icons-png.flaticon.com/512/6192/6192020.png",
-                      "Room in a rental unit",
-                      "Your own room in a home, pluse access\nto shared spaces."),
+                      "Multi Vehicle Parking Slots Availabe",
+                      "Calm area to rest, CCTV in operation"),
                   placePropertyList(
                       size,
                       "https://cdn0.iconfinder.com/data/icons/co-working/512/coworking-sharing-17-512.png",
-                      "Shared common spaces",
+                      "Resturents & PUB",
                       "You'll share parts of the home with the host,"),
                   placePropertyList(
                       size,
                       "https://img.pikbest.com/element_our/20230223/bg/102f90fb4dec6.png!w700wp",
-                      "Shared bathroom",
+                      "Bathroom facilities",
                       "Your'll share the bathroom with others."),
                   const Divider(),
                   SizedBox(height: size.height * 0.02),
@@ -127,13 +127,7 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
                       fontSize: 18,
                     ),
                   ),
-                  SizedBox(
-                    height: 400,
-                    width: size.width,
-                    child: LocationInMap(
-                      place: widget.place,
-                    ),
-                  ),
+               
                   const SizedBox(height: 100),
                 ],
               ),
@@ -168,7 +162,7 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
                   ),
                   children: const [
                     TextSpan(
-                      text: "night",
+                      text: "/ hour",
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -191,13 +185,22 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
           SizedBox(
             width: size.width * 0.3,
           ),
-          Container(
+          GestureDetector(
+          onTap: () {
+            Navigator.pop(context, 'Reservation made');
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Reservation made successfully!'),
+              ),
+            );
+          },
+          child: Container(
             padding: const EdgeInsets.symmetric(
               horizontal: 35,
               vertical: 15,
             ),
             decoration: BoxDecoration(
-              color: Colors.pink,
+              color: Color(0xFF49c7af),
               borderRadius: BorderRadius.circular(15),
             ),
             child: const Text(
@@ -208,6 +211,35 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+          ),
+          ),
+          GestureDetector(
+          onTap: () {
+            Navigator.pop(context, 'Reservation made');
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Reservation made successfully!'),
+              ),
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 35,
+              vertical: 15,
+            ),
+            decoration: BoxDecoration(
+              color: Color(0xFF49c7af),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: const Text(
+              "Reserve",
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           ),
         ],
       ),
@@ -421,7 +453,7 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
                 ),
                 const MyIconButton(icon: Icons.share_outlined),
                 const SizedBox(width: 20),
-                // after this all let's make favorite button function by using provider
+                
                 InkWell(
                   onTap: () {
                     provider.toggleFavorite(widget.place);

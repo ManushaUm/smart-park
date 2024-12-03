@@ -147,7 +147,9 @@ class ProfilePage extends StatelessWidget {
                 profileInfo(Icons.menu_book_outlined, "Privacy Policy"),
                 profileInfo(Icons.menu_book_outlined, "Open source licenses"),
                 const SizedBox(height: 10),
-                const Text(
+                GestureDetector(
+                  onTap: () => _logout(),
+                  child: const Text(
                   "Log out",
                   style: TextStyle(
                     color: Colors.black,
@@ -155,6 +157,7 @@ class ProfilePage extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     decoration: TextDecoration.underline,
                     decorationColor: Colors.black,
+                  ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -204,4 +207,7 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
+}
+void _logout()  {
+  FirebaseAuth.instance.signOut();
 }

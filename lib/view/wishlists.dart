@@ -22,11 +22,11 @@ class Wishlists extends StatelessWidget {
                 const Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    "Edit",
+                    "x",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.underline,
+                    
                     ),
                   ),
                 ),
@@ -60,7 +60,7 @@ class Wishlists extends StatelessWidget {
                               String favorite = favoriteItems[index];
                               return FutureBuilder(
                                   future: FirebaseFirestore.instance
-                                      .collection("myAppCpollection")
+                                      .collection("smartParkCollection")
                                       .doc(favorite)
                                       .get(),
                                   builder: (context, snapShot) {

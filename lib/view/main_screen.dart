@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstt_app/view/message.dart';
 import 'package:firstt_app/view/explore_screen.dart';
 import 'package:firstt_app/view/profile.dart';
+import 'package:firstt_app/view/wishlists.dart';
 import 'package:flutter/material.dart';
 
 class AppMainScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
   void initState() {
     page = [
       const ExploreScreen(),
-      const Scaffold(),
+      const Wishlists(),
       const Scaffold(),
       const MessagesScreen(),
       const ProfilePage(),
@@ -61,7 +62,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
                 Icons.favorite_border,
                 color: selectedIndex == 1 ? Color(0xFF49c7af) : Colors.black45,
               ),
-              label: "Wishlists",
+              label: "Favourites",
             ),
             BottomNavigationBarItem(
               icon: Image.network(
@@ -69,7 +70,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
                 height: 30,
                 color: selectedIndex == 2 ? Color(0xFF49c7af) : Colors.black45,
               ),
-              label: "Trip",
+              label: "",
             ),
             BottomNavigationBarItem(
               icon: Image.network(
