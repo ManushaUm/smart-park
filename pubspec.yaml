@@ -41,6 +41,7 @@ dependencies:
   firebase_auth: ^5.3.3
   font_awesome_flutter: ^10.8.0
   google_sign_in: ^6.2.2
+  another_carousel_pro: ^1.0.0
 
 dev_dependencies:
   flutter_test:
