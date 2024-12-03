@@ -6,7 +6,13 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+
+    final User? user = FirebaseAuth.instance.currentUser;
+    String displayName = user?.displayName ?? 'Guest User';
+    String photoURL = user?.photoURL ??
+        'https://www.gravatar.com/avatar/placeholder-image.png'; 
+
+    //Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -37,17 +43,17 @@ class ProfilePage extends StatelessWidget {
                 const SizedBox(height: 25),
                 Row(
                   children: [
-                    CircleAvatar(
-                      radius: 35,
-                      backgroundColor: Colors.black54,
-                      backgroundImage: NetworkImage(
-                          "${FirebaseAuth.instance.currentUser!.photoURL}"),
-                    ),
-                    SizedBox(width: size.width * 0.06),
+                   // CircleAvatar(
+                     // radius: 35,
+                      //backgroundColor: Colors.black54,
+                      //backgroundImage: NetworkImage(
+                        //  "${FirebaseAuth.instance.currentUser!.photoURL}"),
+                    //),
+                    //SizedBox(width: size.width * 0.06),
                     Text.rich(
                       TextSpan(
                         text:
-                            "${FirebaseAuth.instance.currentUser!.displayName}\n",
+                            "$displayName\n",//"${FirebaseAuth.instance.currentUser?.displayName ?? 'Guest User'}\n",
                         style:
                             const TextStyle(fontSize: 20, color: Colors.black),
                         children: const [
@@ -78,37 +84,7 @@ class ProfilePage extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text.rich(
-                          TextSpan(
-                            text: "Airbnb your place\n",
-                            style: TextStyle(
-                              height: 2.5,
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            children: [
-                              TextSpan(
-                                text:
-                                    "It's simple to get set up and \nstart earning.",
-                                style: TextStyle(
-                                  height: 1.2,
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const Spacer(),
-                        Image.network(
-                          "https://static.vecteezy.com/system/resources/previews/034/950/530/non_2x/ai-generated-small-house-with-flowers-on-transparent-background-image-png.png",
-                          height: 140,
-                          width: 135,
-                        ),
-                      ],
+                    
                     ),
                   ),
                 ),
@@ -156,7 +132,7 @@ class ProfilePage extends StatelessWidget {
                 profileInfo(Icons.help_outline, "Visit the Help Center"),
                 profileInfo(Icons.health_and_safety_outlined,
                     "Get help with a safert issue"),
-                profileInfo(Icons.ac_unit, "How Airbnb works"),
+                profileInfo(Icons.ac_unit, "How this app works"),
                 profileInfo(Icons.edit_outlined, "Give us feedback"),
                 const SizedBox(height: 15),
                 const Text(
