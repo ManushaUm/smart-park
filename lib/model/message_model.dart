@@ -24,7 +24,7 @@ final List<Message> messages = [
         "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg",
     name: "Andrea",
     date: "7/25/23",
-    description: "You: SmartPark update: Reservation of the",
+    description: "Your parking spot has been successfully reserved! Spot Number: 11",
     duration: "Sep 24-28, 2024 Stockach",
   ),
   Message(
@@ -34,7 +34,7 @@ final List<Message> messages = [
         "https://www.perfocal.com/blog/content/images/size/w960/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg",
     name: "Nikolaus",
     date: "7/14/23",
-    description: "Airbnb update: Reminder - Leave about",
+    description: "Your reservation has been canceled. We hope to assist you again soon!",
     duration: "Jul 9-14, 2024, Konstanz",
   ),
   Message(
@@ -43,7 +43,7 @@ final List<Message> messages = [
         "https://shotkit.com/wp-content/uploads/bb-plugin/cache/cool-profile-pic-matheus-ferrero-landscape-6cbeea07ce870fc53bedd94909941a4b-zybravgx2q47.jpeg",
     name: "Manfred & Marcella",
     date: "7/2/23",
-    description: "You: Airbnb update: Reservation of the",
+    description: "Reminder: Your reserved parking spot 112 is ready. Reservation Time: 12pm-2pm",
     duration: "Oct 2-7, 2024 Khajura",
   ),
 ];
