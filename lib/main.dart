@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firstt_app/Authentication/auth_page.dart';
-import 'package:firstt_app/model/category.dart';
+import 'package:firstt_app/Provider/favorite_provider.dart';
 import 'package:firstt_app/view/login_page.dart';
+import 'package:firstt_app/view/main_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -18,13 +20,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      //home: LoginPage(),
-      home: AuthPage(),
-    );
-  }
-}
+
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => FavoriteProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return const AppMainScreen(); 
+            } else {
+              return LoginPage(); 
+            }
+
 
 //upload data to firebase
 class UploadDataToFireBase extends StatelessWidget {
@@ -37,10 +48,13 @@ class UploadDataToFireBase extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             saveCategoryItems();
+
           },
-          child: const Text("Upload data to firebase"),
         ),
       ),
     );
   }
 }
+
+  
+

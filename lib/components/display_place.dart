@@ -18,7 +18,9 @@ class _DisplayPlaceState extends State<DisplayPlace> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     final provider = FavoriteProvider.of(context);
+
     return StreamBuilder(
       stream: placeCollection.snapshots(),
       builder: (context, streamSnapshot) {
@@ -39,7 +41,9 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
+
                         builder: (_) => PlaceDetailScreen(place: place),
+
                       ),
                     );
                   },
@@ -53,7 +57,9 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                             child: SizedBox(
                               height: 375,
                               width: double.infinity,
+
                               child: AnotherCarousel(
+
                                 images: place['imageUrls']
                                     .map((url) => NetworkImage(url))
                                     .toList(),
@@ -162,7 +168,10 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                       SizedBox(height: size.height * 0.007),
                       RichText(
                         text: TextSpan(
-                          text: "\$${place['price']}",
+
+                          text: "\LKR ${place['price']}.00",
+
+
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
@@ -170,7 +179,9 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                           ),
                           children: const [
                             TextSpan(
-                              text: "night",
+
+                              text: "/hour",
+
                               style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.black,
@@ -207,7 +218,9 @@ class _DisplayPlaceState extends State<DisplayPlace> {
               bottomRight: Radius.circular(15),
             ),
             child: Image.asset(
+
               " lib/images/book_cover.png",
+
               height: 60,
               width: 60,
               fit: BoxFit.cover,

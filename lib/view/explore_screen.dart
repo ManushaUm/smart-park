@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firstt_app/components/SearchBar.dart';
+import 'package:firstt_app/components/display_place.dart';
 import 'package:firstt_app/components/display_total_price.dart';
+import 'package:firstt_app/components/map_with_custom_info_windows.dart';
 import 'package:flutter/material.dart';
 
 class ExploreScreen extends StatefulWidget {
@@ -14,9 +16,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
   // collection for category
   final CollectionReference categoryCollection =
       FirebaseFirestore.instance.collection("AppCategory");
-  // collection for place items
-  final CollectionReference placeCollection =
-      FirebaseFirestore.instance.collection("smartParkCollection");
 
   int selectedIndex = 0;
   @override
@@ -36,11 +35,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    // for switch button
+                   // for switch button
                     DisplayTotalPrice(),
                     SizedBox(height: 15),
                     // displat the place items
-                    //DisplayPlace(),
+                    DisplayPlace(),
+                  
                   ],
                 ),
               ),
@@ -49,6 +49,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
         ),
       ),
       // for google map
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: const MapWithCustomInfoWindows(), //MapWithCustomInfoWindows(),
     );
   }
 
