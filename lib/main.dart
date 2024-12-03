@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => FavoriteProvider()),
@@ -34,6 +35,20 @@ class MyApp extends StatelessWidget {
             } else {
               return LoginPage(); 
             }
+
+
+//upload data to firebase
+class UploadDataToFireBase extends StatelessWidget {
+  const UploadDataToFireBase({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            saveCategoryItems();
+
           },
         ),
       ),

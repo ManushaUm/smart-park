@@ -1,7 +1,7 @@
+import 'package:firstt_app/components/my_icon_button.dart';
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:custom_info_window/custom_info_window.dart';
-import 'package:firstt_app/components/my_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -14,13 +14,16 @@ class MapWithCustomInfoWindows extends StatefulWidget {
 }
 
 class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
-  LatLng myCurrentLocation = const LatLng(7.8731, 80.7718);
+
+  LatLng myCurrentLocation = const LatLng(27.7172, 85.3240);
   BitmapDescriptor customIcon = BitmapDescriptor.defaultMarker;
   late GoogleMapController googleMapController;
+  // first you need to add a plackge called custom_info_window
   final CustomInfoWindowController _customInfoWindowController =
       CustomInfoWindowController();
+  // firebase collection to load latlng of place
   final CollectionReference placeCollection =
-      FirebaseFirestore.instance.collection("smartParkCollection");
+      FirebaseFirestore.instance.collection("myAppCpollection");
 
   List<Marker> markers = [];
 
@@ -29,6 +32,7 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
     super.initState();
     _loadMarkers();
   }
+
 
   Future<void> _loadMarkers() async {
     try {
@@ -215,6 +219,7 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
     } catch (e) {
       print('Error loading markers: $e');
     }
+
   }
 
   @override
@@ -224,67 +229,71 @@ class _MapWithCustomInfoWindowsState extends State<MapWithCustomInfoWindows> {
       backgroundColor: Colors.transparent,
       elevation: 0,
       onPressed: () {
+
+        // now, what we need is=> if we clik on map icon open the bottomsheet and show the goofle map,
+        // i have already setup the project for google map, api key, and developer account,
+        // if you don't have knwledge about that then visit my goome map playlist, i have cover it from zero level
         showModalBottomSheet(
-          clipBehavior: Clip.none,
-          isScrollControlled: true,
-          backgroundColor: Colors.transparent,
-          context: context,
-          builder: (BuildContext context) {
-            return Container(
-              color: Colors.white,
-              height: size.height * 0.77,
-              width: size.width,
-              child: Stack(
-                children: [
-                  SizedBox(
-                    height: size.height * 0.77,
-                    child: GoogleMap(
-                      initialCameraPosition:
-                          CameraPosition(target: myCurrentLocation, zoom: 10),
-                      onMapCreated: (GoogleMapController controller) {
-                        googleMapController = controller;
-                        _customInfoWindowController.googleMapController =
-                            controller;
-                      },
-                      onTap: (argument) {
-                        _customInfoWindowController.hideInfoWindow!();
-                      },
-                      onCameraMove: (position) {
-                        _customInfoWindowController.onCameraMove!();
-                      },
-                      markers: markers.toSet(),
-                    ),
-                  ),
-                  CustomInfoWindow(
-                    controller: _customInfoWindowController,
-                    height: size.height * 0.34,
-                    width: size.width * 0.85,
-                    offset: 50,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 170,
-                        vertical: 5,
+            clipBehavior: Clip.none,
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            context: context,
+            builder: (BuildContext context) {
+              return Container(
+                color: Colors.white,
+                height: size.height * 0.77,
+                width: size.width,
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      height: size.height * 0.77,
+                      child: GoogleMap(
+                        initialCameraPosition:
+                            CameraPosition(target: myCurrentLocation),
+                        onMapCreated: (GoogleMapController controller) {
+                          googleMapController = controller;
+                          _customInfoWindowController.googleMapController =
+                              controller;
+                        },
+                        onTap: (argument) {
+                          _customInfoWindowController.hideInfoWindow!();
+                        },
+                        onCameraMove: (position) {
+                          _customInfoWindowController.onCameraMove!();
+                        },
+                        markers: markers.toSet(),
                       ),
-                      child: Container(
-                        height: 5,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.black54,
-                          borderRadius: BorderRadius.circular(10),
+                    ),
+                    CustomInfoWindow(
+                      controller: _customInfoWindowController,
+                      height: size.height * 0.34,
+                      width: size.width * 0.85,
+                      offset: 50,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 170,
+                          vertical: 5,
+                        ),
+                        child: Container(
+                          height: 5,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.black54,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
+                  ],
+                ),
+              );
+            });
+
       },
       label: Container(
         padding: const EdgeInsets.all(10),

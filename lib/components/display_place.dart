@@ -1,8 +1,8 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firstt_app/Provider/favorite_provider.dart';
 import 'package:firstt_app/view/place_detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DisplayPlace extends StatefulWidget {
   const DisplayPlace({super.key});
@@ -12,13 +12,15 @@ class DisplayPlace extends StatefulWidget {
 }
 
 class _DisplayPlaceState extends State<DisplayPlace> {
-  //collection for places
+  // collection for place items
   final CollectionReference placeCollection =
       FirebaseFirestore.instance.collection("smartParkCollection");
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final provider =  FavoriteProvider.of(context); //FavoriteProvider.of(context);
+
+    final provider = FavoriteProvider.of(context);
+
     return StreamBuilder(
       stream: placeCollection.snapshots(),
       builder: (context, streamSnapshot) {
@@ -39,7 +41,9 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => PlaceDetailScreen(place: place), //PlaceDetailScreen(place: place),
+
+                        builder: (_) => PlaceDetailScreen(place: place),
+
                       ),
                     );
                   },
@@ -53,7 +57,9 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                             child: SizedBox(
                               height: 375,
                               width: double.infinity,
-                              child: AnotherCarousel( //AnotherCarousel(
+
+                              child: AnotherCarousel(
+
                                 images: place['imageUrls']
                                     .map((url) => NetworkImage(url))
                                     .toList(),
@@ -162,7 +168,10 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                       SizedBox(height: size.height * 0.007),
                       RichText(
                         text: TextSpan(
+
                           text: "\LKR ${place['price']}.00",
+
+
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
@@ -170,7 +179,9 @@ class _DisplayPlaceState extends State<DisplayPlace> {
                           ),
                           children: const [
                             TextSpan(
+
                               text: "/hour",
+
                               style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.black,
@@ -207,7 +218,9 @@ class _DisplayPlaceState extends State<DisplayPlace> {
               bottomRight: Radius.circular(15),
             ),
             child: Image.asset(
-              "lib/images/book_cover.png",
+
+              " lib/images/book_cover.png",
+
               height: 60,
               width: 60,
               fit: BoxFit.cover,
